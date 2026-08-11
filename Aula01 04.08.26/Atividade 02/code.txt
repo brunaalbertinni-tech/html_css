@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Estrogonofe de Carne</title>
+
+    <style>
+        body {
+            background-color: #f5e6d3;
+        }
+    </style>
+
+</head>
+<body>
+
+    <h1>Estrogonofe de Carne</h1>
+    <p>Receita do dia.</p>
+
+<h2>História</h2>
+<p>O estrogonofe surgiu na Rússia por volta da década de 1850. No Brasil, o prato chegou no fim da década de 1940, quando foi servido pela primeira vez na boate Vogue, em Copacabana, no Rio de Janeiro, preparado pelo chef russo Gregor Berezanski. Com o tempo, a receita foi adaptada ao paladar brasileiro, se tornando um dos pratos mais populares do país</p>
+<h2>Ingredientes</h2>
+<ul>
+<li> 1 kg de patinho cortado em cubos;</li>
+<li> ½ cebola bem picadinha;</li>
+<li> Alho a gosto;</li>
+<li> Tempero a gosto;</li>
+<li> Um fio de olho;</li>
+<li> 2 caixas de creme de leite (400 g);</li>
+<li> 6 colheres de sopa de ketchup;</li>
+<li> 5 colheres de sopa de mostarda;</li>
+<li> 4 colheres de sopa de molho inglês;</li>
+</ul>
+<h2> Modo de preparo</h2>
+<ol> 
+<li> Corte a carne em cubos e pique a cebola;</li> 
+<li> Em uma panela acrescente um fio de óleo, alho e a cebola picada;</li> 
+<li> Ligue o fogo e mexa até dourar;</li>
+<li> Em sequência acrescente a carne picada e os temperos de sua preferência;</li>
+<li> Refogue até a carne dourar; e ficar bem cozida.;</li>
+<li> Acrescente o molho inglês, ketchup e a mostarda;</li>
+<li> Misture bem e adicione o creme de leite;</li>
+<li> Mexa até formar um molho cremoso e homogêneo;</li>
+<li> Cozinhe por volta de mais 5 minutos;</li>
+<li> E é só aproveitar;</li>
+</ol>
+<h3>Dicas</h3>
+<ul>
+<li>Use patinho para um resultado mais macio.</li>
+<li>Pique a cebola bem pequena.</li>
+<li>Sirva com um arroz bem fresquinho e batata palha</li>
+</ul>
+</body>
+</html>

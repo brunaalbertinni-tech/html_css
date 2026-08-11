@@ -1,0 +1,39 @@
+<h1>Introdução ao HTML e CSS</h1>
+<p>HTML é a linguagem responsável pela estrutura de uma página Web. CSS é utilizado para deixar essa página mais bonita e organizada.</p>
+<h1>O que aprendemos hoje?</h1>
+<ol>
+<li>O que é HTML</li>
+<li>Estrutura básica de uma página</li>
+<li>Títulos (h1 até h6)<///li>
+<li>Parágrafos</li>
+<li>Listas ordenadas</li>
+<li>Listas não ordenadas</li>
+</ol>
+<ul>
+<li>html - Define o início e o fim do documento HTML.</li>
+<li>head - Contém informações da página, como título e configurações.</li>
+<li>title - Define o nome da página exibida na aba do navegador.</li>
+<li>body - Contém todo o coteúdo visível da página.</li>
+<li>h1 - Título principal da página.</li>
+<li>h2 - Título de uma seção.</li>
+<li>h3 - Subtítulo de uma seção.</li>
+<li>h4 - Título de nível menor.</li>
+<li>h5 - Título de nível mais específico.</li>
+<li>h6 - Menor nível de título.</li>
+<li>p - Cria um parágrafo de texto.</li>
+<li>ol- Cria uma lista ordenada (numerada).</li>
+<li>ul- Cria uma lista não ordenada (com marcadores).</li>
+<li>li- Representa um item dentro de uma lista.</li>
+</ul>
+<h2>Por que aprender HTML?</h2>
+<p>HTML é o primeiro passo para quem deseja criar sites e aplicações Web. Todo desenvolvedor Front-end começa aprendendo HTML antes de estudar CSS e JavaScript.</p>
+<h2>Curiosidades</h2>
+<ul>
+<li>HTML foi criado em 1991.</li>
+<li>HTML significa HyperText Markup Language.</li>
+<li>CSS significa Cascading Style Sheets.</li>
+<li>Todo site utiliza HTML.</li>
+<li>O navegador interpreta o HTML para exibir a página.</li>
+</ul>
+<h3>Curso Técnico em Desenvolvimento de Sistemas</h3>
+<p>SENAI - Aula de Introdução ao HTML. </p>

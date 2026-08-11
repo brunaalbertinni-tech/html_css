@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bruna Albertini Cardoso</title>
+
+    <style>
+        body {
+            background-color: #bafff7;
+        }
+    </style>
+
+</head>
+<body>
+
+<h1>Bruna Albertini Cardoso</h1>
+<p>Não nasci pra agradar todo mundo. Falo pouco do que sinto, mas muito do que penso.</p>
+<h2>Sobre Mim</h2>
+<h3>Quem Sou Eu</h3>
+<p>Me chamo Bruna, tenho 17 anos e moro em Ferraz de Vasconcelos (SP). Sou uma pessoa espontânea, sincera e gosto de fazer as pessoas rirem. Não costumo demonstrar tudo o que sinto, pois prefiro guardar para mim. Valorizo quem é verdadeiro comigo, e se descubro falsidade procuro me afastar; acredito que ninguém precisa agradar todo mundo. Gosto de aproveitar os momentos com meus amigos e família, jogar vôlei e principalmente conversar.</p>
+<h3> Minha história </h3>
+<p> Filha de Sérgio dos Santos Cardoso e Tatiane Meneses Albertini, , nasci em São Bernardo do Campo. Passei a primeira infância morando na casa da minha avó, em Guaianases, junto com minha família, onde vivi momentos muito felizes e construí minhas primeiras lembranças. Sempre fui muito ligada à minha família, sou estou bem se eles estão bem, um dos momentos mais importantes da minha vida foi o nascimento da minha irmã, que trouxe ainda mais alegria à minha vida, atualmente resido na cidade de Ferraz de Vasconcelos.</p>
+<p> Aos 6 anos entrei no SESI de Ferraz de Vasconcelos, onde estudo até hoje, estou cursando TI (Tecnologia da informação), em aproximadamente um ano e meio pretendo cursar Psicologia Organizacional ou Arquitetura.
+
+<h3>Como Me Defino</h3>
+<ul>
+<li>Criativa</li>
+<li>Sincera</li>
+<li>Intensa</li>
+<li>Risonha</li>
+<li>Tímida</li>
+<li>Determinada</li>
+</ul>
+<h2> Meus Gostos e Interesses</h2>
+<h3> Entretenimento </h3> 
+<h4> Filmes Favoritos</h4>
+<ul>
+<li>Bela e a Fera</li>
+<li>Viva a vida é uma festa</li>
+<li>Para todos os garotos que já amei</li>
+</ul>
+<h4> Séries que Amo</h4>
+<ul>
+<li>XO, Kitty </li>
+<li>Stranger Things </li>
+<li>Princesinha Sofia</li>
+</ul>
+<h4>Músicas/Artistas</h4> 
+<ul>
+<li>Perfect</li>
+<li>Marília Mendonça</li>
+<li>Love in the Dark</li>
+</ul>
+<h4>Livros Marcantes</h4> 
+<ul>
+<li>Pequeno Príncipe </li>
+<li>O pinóquio</li>
+<li> A princesinha</li>
+</ul>
+<h3>Hobbies e Atividades</h3> 
+<p>Meus principais hobbies são jogar vôlei e passar tempo com meus amigos, conversando, jogando e se zoando</p>
+<ul>
+<li>Jogar Vôlei</li>
+<li>Sair com meus amigos e ou família</li>
+<li>Jogar Vídeo Game</li>
+</ul>
+<h3>Comidas e Sabores</h3> 
+<h4>Pratos Favoritos<h4>
+<ul>
+<li>Estrogonofe</li>
+<li>Escondidinho de frango</li>
+<li>Carne de panela</li>
+</ul>
+<h4>Comidas que não suporto<h4>
+<ul>
+<li>Fígado</li>
+<li>Jiló</li>
+<li>Chá de Alho e gengibre</li>
+<li>Caldo de mocotó</li>
+</ul>
+<h3>Lugares especiais</h3> 
+<p>Punta Cana, porque foi minha primeira viagem internacional, no ano passado. Fiquei em um resort lindo e grande, onde tinha muitas comidas diferentes e fiz dois passeios muito legais, o primeiro foi conhecer a ilha onde foi gravado o filme Lagoa Azul, andar de barco e nadar nas picinas naturais. O segundo era para nadar com golfinhos, peixes e tubarões, mas não fiz porque a pele dos golfinhos me deu muita gastura e agonia.</p>
+<ul>
+<li>Viena</li>
+<li>Miami</li>
+<li>Dubai</li>
+<li>Lisboa</li>
+</ul>
+<h2> Meus Sonhos e Objetivos</h2>
+<h3> Sonhos pessoais</h3>
+<p>Meu maior sonho é construir uma vida da qual eu me orgulhe, onde eu consiga um emprego que eu goste, ganhando um salário que me permita viver tranquilamente sem sofre aperto financeiro e viver momentos especiais com as pessoas que amo. Quero conhecer novos lugares, continuar fazendo coisas que gosto.</p>
+<h3> Meus sonhos: </h3>
+<ul>
+<li>Ter minha casa própria antes de me casar</li>
+<li>Poder melhorar a vida da minha família</li>
+<li>Me formar em algo que me faça feliz</li>
+<li>Constituir uma família</li>
+</ul>
+<h3>Objetivos a curto prazo</h3>
+<ol>
+<li>Terminar o ensino médio e tirar uma nota excelente no enem </li>
+<li>Descobrir qual área profissional combina comigo</li>
+<li>Aproveitar mais momentos com meus amigos e família</li>
+<li>Aprender coisas diferentes</li>
+</ol>
+<h3>Objetivos de Longo Prazo</h3>
+<ol>
+<li>Ter uma carreira que eu me identifico</li>
+<li>Ter minha independência e conquistar minhas coisas</li>
+<li>Viajar e conhecer outros lugares </li>
+<li>Construir minha própria família</li>
+</ol>
+<h3>Meu Legado</h3>
+<p>
+ Quero deixar minhas lembranças e conhecimentos, e que todos entendam que sempre fiz o meu melhor, principalmente para ajudar aqueles que eu amo.
+</p>
+<h2>Minha Jornada Profissional</h2>
+<h3>Formação Acadêmica</h3>
+<ol>
+<li>Ensino fundamental - do 1° ano ao 5°, fase do auto conhecimento</li>
+<li>Ensino fundamental 2 - desenvolvimento de amizades e descoberta de matérias novas</li>
+<li>Ensino médio - fase atual, Aprendizado mais eficiente e preparatório sendo essencial para o nosso futuro </li>
+</ol>
+<p>
+Estudo no SESI desde pequena e essa escola faz parte da minha história. As matérias que mais 
+gosto são química, biologia e geografia. Também gosto de aprender coisas novas e descobrir coisas que possam agregar na minha carreira futura.
+</p>
+<h3>Profissão dos Sonhos</h3>
+<p>
+Ainda estou descobrindo exatamente qual profissão quero seguir, pois estou em dúvida entre arquitetura e psicologia
+</p>
+<ul>
+<li>Comunicação</li>
+<li>Organização</li>
+<li>Responsabilidade</li>
+<li>Empatia</li>
+</ul>
+<h3>Onde Me Vejo no Futuro</h3>
+<p>
+Daqui a 10 anos, me imagino formada, trabalhando em uma área que gosto, tendo minha 
+independência e conquistando minhas próprias coisas. Podendo ajudar minha família financeiramente.</p>
+<h2>Relacionamentos</h2>
+<h3>Amizades</h3>
+<p>
+As amizades são muito importantes na minha vida, porque gosto de ter pessoas por perto para 
+compartilhar momentos, rir e criar lembranças. Valorizo muito aqueles amigos que estão comigo 
+nos momentos bons e ruins e que gostam de mim pelo meu jeito de ser, são eles que ajudam quando preciso e me distraem positivamente, me tirando um pouco da rotina.
+</p>
+<ul>
+<li>Sinceridade</li>
+<li>Lealdade</li>
+<li>Bom humor</li>
+<li>Companheirismo</li>
+</ul>
+<h3>Pessoas que Me Inspiram</h3>
+<ul>
+<li>Minha família, pelo apoio e por tudo que fazem por mim</li>
+<li>Meus amigos, pelos momentos que compartilham comigo</li>
+<li>Conhecidos que querem muito mais meu bem do que muitos familiares</li>
+</ul>
+<h2>Minha Filosofia de Vida</h2>
+<h3>Valores que Me Guiam</h3>
+<ul>
+<li>Sinceridade</li>
+<li>Respeito</li>
+<li>Amizade</li>
+<li>Determinação</li>
+</ul>
+<p>
+Esses valores influenciam minhas escolhas porque acredito que ser verdadeira comigo mesma e 
+com as pessoas ao meu redor é uma das coisas mais importantes. Tento sempre agir de acordo 
+com aquilo que acredito.
+</p>
+<h3>Lições Aprendidas</h3>
+<ol>
+<li>Valorizar os pequenos momentos que parecem bobos, mas é esses que nos tornam quem somos.</li>
+<li>Nem sempre agradar todo mundo é necessário, o importante é respeitar as diferenças</li>
+<li>As dificuldades também ajudam a crescer, pois através dela que pensamos em outras alternativas </li>
+<li>As pessoas certas fazem diferença na nossa vida</li>
+<li>Ser eu mesma, não importa se gostam ou não</li>
+</ol>
+<h3>Conselhos que Daria</h3>
+<ul>
+<li>Não tenha medo de ser quem você é</li>
+<li>Aproveite os momentos com quem você ama</li>
+<li>Não desista dos seus sonhos</li>
+<li>Não tente agradar todo mundo</li>
+</ul>
+<h2>Curiosidades Sobre Mim</h2>
+<ul>
+<li>Gosto muito de jogar vôlei</li>
+<li>Adoro conversar com meus amigos</li>
+<li>Minha primeira viagem internacional foi para Punta Cana</li>
+<li>Um dos dias mais legais são aqueles que sento na calçada da Duda com nossos amigos para brincar e se zoar</li>
+<li>Tenho muito carinho pela minha família</li>
+</ul>
+<h3>Medos e Desafios</h3>
+<p>
+Um dos meus desafios é aprender a confiar mais em mim mesma e não pensar tanto no que as 
+outras pessoas vão achar. Também busco melhorar minha timidez em algumas situações e me 
+permitir viver mais experiências novas.
+</p>
+<h3>Superpoderes que Gostaria de Ter</h3>
+<ul>
+<li>Teletransporte - para poder conhecer lugares diferentes rapidamente e chegar rápido nos lugares</li>
+<li>Viajar no tempo - para reviver momentos especiais e mudar coisas que me arrependo</li>
+<li>Velocidade - para melhorar minha proatividade/li>
+</ul>
+</body>
+</html>
