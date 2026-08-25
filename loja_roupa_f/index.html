@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Floratta - Moda Feminina 2026</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header class="header">
+  <div class="header-top">Frete gratis acima de R$ 199 | Parcele em ate 6x sem juros</div>
+  <div class="header-main">
+    <a href="/" class="logo">Floratta</a>
+    <div class="search-bar"><input type="text" id="search-input" placeholder="Buscar produtos..."></div>
+    <div class="header-actions">
+      <a href="/wishlist" class="header-action"><span class="header-action-icon">+</span><span>Favoritos</span><span class="header-action-badge" id="fav-count">0</span></a>
+      <a href="/carrinho" class="header-action"><span class="header-action-icon">o</span><span>Carrinho</span><span class="header-action-badge" id="cart-count">0</span></a>
+      <a href="/perfil" class="header-action"><span class="header-action-icon">u</span><span>Perfil</span></a>
+    </div>
+  </div>
+  <nav class="nav">
+    <ul class="nav-list">
+      <li><a href="/" class="nav-link active">Home</a></li>
+      <li><a onclick="filterCat('vestidos')" class="nav-link">Vestidos</a></li>
+      <li><a onclick="filterCat('blusas')" class="nav-link">Blusas</a></li>
+      <li><a onclick="filterCat('calcas')" class="nav-link">Calcas</a></li>
+      <li><a onclick="filterCat('saias')" class="nav-link">Saias</a></li>
+      <li><a onclick="filterCat('conjuntos')" class="nav-link">Conjuntos</a></li>
+      <li><a onclick="filterCat('acessorios')" class="nav-link">Acessorios</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="hero-carousel">
+  <div id="carousel-container"></div>
+  <button class="carousel-btn prev" onclick="changeSlide(-1)">&lt;</button>
+  <button class="carousel-btn next" onclick="changeSlide(1)">&gt;</button>
+  <div class="carousel-dots" id="carousel-dots"></div>
+</section>
+
+<section class="section">
+  <div class="section-header">
+    <h2 class="section-title">Categorias</h2>
+    <p class="section-subtitle">Encontre o estilo perfeito para cada ocasiao</p>
+  </div>
+  <div class="categories-grid">
+    <a onclick="filterCat('vestidos')" class="category-card"><span class="category-icon">V</span><h3>Vestidos</h3></a>
+    <a onclick="filterCat('blusas')" class="category-card"><span class="category-icon">B</span><h3>Blusas</h3></a>
+    <a onclick="filterCat('calcas')" class="category-card"><span class="category-icon">C</span><h3>Calcas</h3></a>
+    <a onclick="filterCat('saias')" class="category-card"><span class="category-icon">S</span><h3>Saias</h3></a>
+    <a onclick="filterCat('conjuntos')" class="category-card"><span class="category-icon">J</span><h3>Conjuntos</h3></a>
+    <a onclick="filterCat('acessorios')" class="category-card"><span class="category-icon">A</span><h3>Acessorios</h3></a>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-header">
+    <h2 class="section-title">Promocoes</h2>
+    <p class="section-subtitle">Ofertas especiais por tempo limitado</p>
+  </div>
+  <div class="products-grid" id="promotion-products"><div class="loading"><div class="spinner"></div><p>Carregando promocoes...</p></div></div>
+</section>
+
+<section class="section">
+  <div class="section-header">
+    <h2 class="section-title">Novidades</h2>
+    <p class="section-subtitle">As ultimas tendencias da temporada</p>
+  </div>
+  <div class="products-grid" id="new-products"><div class="loading"><div class="spinner"></div><p>Carregando novidades...</p></div></div>
+</section>
+
+<section class="section">
+  <div class="section-header">
+    <h2 class="section-title">Em Destaque</h2>
+    <p class="section-subtitle">Pecas selecionadas especialmente para voce</p>
+  </div>
+  <div class="products-grid" id="featured-products"><div class="loading"><div class="spinner"></div><p>Carregando destaques...</p></div></div>
+</section>
+
+<section class="section" id="produtos">
+  <div class="section-header">
+    <h2 class="section-title">Todos os Produtos</h2>
+    <p class="section-subtitle">Filtre e encontre exatamente o que procura</p>
+  </div>
+  <div class="shop-layout">
+    <aside class="filters-sidebar">
+      <div class="filters-container">
+        <div class="filters-header"><h2>Filtros</h2><button class="filters-clear" onclick="clearFilters()">Limpar</button></div>
+        <div class="filter-section">
+          <h3 class="filter-section-title">Tamanhos</h3>
+          <div class="size-filter-grid">
+            <button class="size-filter-btn" data-size="PP">PP</button>
+            <button class="size-filter-btn" data-size="P">P</button>
+            <button class="size-filter-btn" data-size="M">M</button>
+            <button class="size-filter-btn" data-size="G">G</button>
+            <button class="size-filter-btn" data-size="GG">GG</button>
+          </div>
+        </div>
+        <div class="filter-section">
+          <h3 class="filter-section-title">Cores</h3>
+          <div class="color-filter-grid">
+            <div class="color-filter-btn" style="background:#000" data-color="Preto"></div>
+            <div class="color-filter-btn" style="background:#fff;border:2px solid #ddd" data-color="Branco"></div>
+            <div class="color-filter-btn" style="background:#c97b8e" data-color="Rosa"></div>
+            <div class="color-filter-btn" style="background:#27ae60" data-color="Verde"></div>
+            <div class="color-filter-btn" style="background:#3498db" data-color="Azul"></div>
+            <div class="color-filter-btn" style="background:#f39c12" data-color="Amarelo"></div>
+          </div>
+        </div>
+        <div class="filter-section">
+          <h3 class="filter-section-title">Preco</h3>
+          <div class="price-filter-inputs">
+            <input type="number" class="price-input" id="min-price" placeholder="Min" min="0">
+            <span>-</span>
+            <input type="number" class="price-input" id="max-price" placeholder="Max" min="0">
+          </div>
+        </div>
+        <div class="filter-section">
+          <h3 class="filter-section-title">Ocasiao</h3>
+          <div class="occasion-filter-grid">
+            <button class="filter-btn" data-occasion="Casual">Casual</button>
+            <button class="filter-btn" data-occasion="Trabalho">Trabalho</button>
+            <button class="filter-btn" data-occasion="Festa">Festa</button>
+          </div>
+        </div>
+        <div class="filter-section">
+          <h3 class="filter-section-title">Tipo</h3>
+          <div class="type-filter-grid">
+            <button class="filter-btn" data-type="Longo">Longo</button>
+            <button class="filter-btn" data-type="Curto">Curto</button>
+            <button class="filter-btn" data-type="Social">Social</button>
+            <button class="filter-btn" data-type="Esportivo">Esportivo</button>
+          </div>
+        </div>
+        <div class="filter-section">
+          <h3 class="filter-section-title">Categoria</h3>
+          <div class="category-filter-list">
+            <button class="filter-btn" data-category="vestidos">Vestidos</button>
+            <button class="filter-btn" data-category="blusas">Blusas</button>
+            <button class="filter-btn" data-category="calcas">Calcas</button>
+            <button class="filter-btn" data-category="saias">Saias</button>
+            <button class="filter-btn" data-category="conjuntos">Conjuntos</button>
+            <button class="filter-btn" data-category="acessorios">Acessorios</button>
+          </div>
+        </div>
+        <div class="filters-actions">
+          <button class="btn btn-primary" onclick="applyFilters()">Aplicar Filtros</button>
+        </div>
+      </div>
+    </aside>
+    <div class="products-grid" id="all-products"><div class="loading"><div class="spinner"></div><p>Carregando produtos...</p></div></div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-content">
+    <div class="footer-section"><h3>Floratta</h3><p>Moda que floresce com voce.</p><p style="margin-top:15px;font-size:0.85rem">Elegancia e sofisticacao em cada peca.</p></div>
+    <div class="footer-section"><h3>Categorias</h3><a onclick="filterCat('vestidos')">Vestidos</a><a onclick="filterCat('blusas')">Blusas</a><a onclick="filterCat('calcas')">Calcas</a><a onclick="filterCat('saias')">Saias</a></div>
+    <div class="footer-section"><h3>Atendimento</h3><a href="#">Central de Ajuda</a><a href="#">Trocas e Devolucoes</a><a href="#">Politica de Privacidade</a></div>
+    <div class="footer-section"><h3>Contato</h3><p>contato@floratta.com</p><p>(11) 99999-9999</p><p>Seg a Sex: 9h as 18h</p></div>
+  </div>
+  <div class="footer-bottom"><p>&copy; 2026 Floratta. Todos os direitos reservados.</p></div>
+</footer>
+
+<script src="/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,16 @@
+{
+  "categories": [
+    { "name": "Vestidos", "slug": "vestidos" },
+    { "name": "Blusas", "slug": "blusas" },
+    { "name": "Calcas", "slug": "calcas" },
+    { "name": "Saias", "slug": "saias" },
+    { "name": "Conjuntos", "slug": "conjuntos" },
+    { "name": "Acessorios", "slug": "acessorios" }
+  ],
+  "admin": {
+    "name": "Administrador",
+    "email": "admin@floratta.com",
+    "password": "admin123",
+    "role": "admin"
+  }
+}

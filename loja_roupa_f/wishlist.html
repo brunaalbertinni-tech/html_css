@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Favoritos - Floratta</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header class="header">
+  <div class="header-top">Frete gratis acima de R$ 199</div>
+  <div class="header-main">
+    <a href="/" class="logo">Floratta</a>
+    <div class="header-actions">
+      <a href="/" class="header-action"><span class="header-action-icon">&lt;</span><span>Continuar comprando</span></a>
+      <a href="/carrinho" class="header-action"><span class="header-action-icon">o</span><span>Carrinho</span><span class="header-action-badge" id="cart-count">0</span></a>
+    </div>
+  </div>
+</header>
+
+<div class="cart-page">
+  <div class="cart-header">
+    <h1>Meus Favoritos</h1>
+    <p>Produtos que voce salvou</p>
+  </div>
+  <div id="favorites-content"><div class="loading"><div class="spinner"></div><p>Carregando...</p></div></div>
+</div>
+
+<footer class="footer"><div class="footer-bottom"><p>&copy; 2026 Floratta. Todos os direitos reservados.</p></div></footer>
+
+<script src="/script.js"></script>
+<script>
+async function loadFavorites() {
+  const token = getToken();
+  if (!token) {
+    document.getElementById('favorites-content').innerHTML = '<div class="empty-state"><h3>Faca login para ver favoritos</h3><a href="/login" class="btn btn-primary" style="margin-top:20px">Fazer Login</a></div>';
+    return;
+  }
+  try {
+    const r = await fetch('/api/favorites', { headers: { 'Authorization': 'Bearer ' + token } });
+    const products = await r.json();
+    if (!products || products.length === 0) {
+      document.getElementById('favorites-content').innerHTML = '<div class="empty-state"><h3>Nenhum favorito ainda</h3><p style="margin:15px 0">Voce ainda nao salvou nenhum produto</p><a href="/" class="btn btn-primary" style="margin-top:20px">Ver Produtos</a></div>';
+      return;
+    }
+    document.getElementById('favorites-content').innerHTML = '<div class="products-grid">' + products.map(p => productCard(p)).join('') + '</div>';
+  } catch(e) {
+    console.error(e);
+    document.getElementById('favorites-content').innerHTML = '<div class="empty-state"><p>Erro ao carregar</p></div>';
+  }
+}
+document.addEventListener('DOMContentLoaded', loadFavorites);
+</script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin - Floratta</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<div id="login-screen" class="login-page">
+  <div class="login-container">
+    <h1>Floratta Admin</h1><p>Área Administrativa</p>
+    <div class="login-tabs"><div class="login-tab active" onclick="switchTab('login',event)">Login</div><div class="login-tab" onclick="switchTab('register',event)">Cadastrar</div></div>
+    <form id="login-form"><div class="form-group"><label>Email</label><input type="email" id="login-email" required></div><div class="form-group"><label>Senha</label><input type="password" id="login-password" required></div><button type="submit" class="btn btn-primary btn-block">ENTRAR</button></form>
+    <form id="register-form" style="display:none"><div class="form-group"><label>Nome</label><input type="text" id="reg-name" required></div><div class="form-group"><label>Email</label><input type="email" id="reg-email" required></div><div class="form-group"><label>Senha</label><input type="password" id="reg-password" required minlength="6"></div><button type="submit" class="btn btn-primary btn-block">CADASTRAR</button></form>
+  </div>
+</div>
+
+<div id="admin-screen" class="admin-layout" style="display:none">
+  <aside class="admin-sidebar">
+    <div class="logo">Floratta</div>
+    <ul class="admin-nav">
+      <li><a onclick="showView('dashboard',event)" class="active">Dashboard</a></li>
+      <li><a onclick="showView('products',event)">Produtos</a></li>
+      <li><a onclick="showView('form',event)">Novo Produto</a></li>
+      <li><a href="/">Ver Loja</a></li>
+      <li><a onclick="logout()">Sair</a></li>
+    </ul>
+  </aside>
+  <main class="admin-content">
+    <div id="dashboard-view"><div class="admin-header"><h1>Dashboard</h1></div><div class="stats-grid" id="stats"><div class="loading"><div class="spinner"></div></div></div></div>
+    <div id="products-view" style="display:none">
+      <div class="admin-header"><h1>Produtos</h1><button class="btn btn-primary" onclick="showView('form',event)">+ Novo Produto</button></div>
+      <div class="admin-table"><table><thead><tr><th>Imagem</th><th>Nome</th><th>Categoria</th><th>Preço</th><th>Status</th><th>Ações</th></tr></thead><tbody id="products-table"></tbody></table></div>
+    </div>
+    <div id="form-view" style="display:none">
+      <div class="admin-header"><h1 id="form-title">Novo Produto</h1><button class="btn btn-outline" onclick="showView('products',event)">Cancelar</button></div>
+      <form id="product-form" class="form-container">
+        <div class="form-row"><div class="form-group"><label>Nome *</label><input type="text" id="p-name" required></div><div class="form-group"><label>Categoria *</label><select id="p-category" required></select></div></div>
+        <div class="form-row"><div class="form-group"><label>Tipo</label><input type="text" id="p-type" placeholder="Ex: Vestido longo"></div><div class="form-group"><label>Preço *</label><input type="number" id="p-price" step="0.01" required></div></div>
+        <div class="form-row"><div class="form-group"><label>Preço promocional</label><input type="number" id="p-sale-price" step="0.01"></div><div class="form-group"><label>Quantidade</label><input type="number" id="p-quantity" value="0"></div></div>
+        <div class="form-row"><div class="form-group"><label>Ocasião</label><select id="p-occasion"><option value="">Selecione</option><option value="Casual">Casual</option><option value="Trabalho">Trabalho</option><option value="Festa">Festa</option></select></div><div class="form-group"><label>Composição</label><input type="text" id="p-composition"></div></div>
+        <div class="form-group"><label>Descrição</label><textarea id="p-description" rows="4"></textarea></div>
+        <div class="checkbox-group"><label><input type="checkbox" id="p-featured"> Destaque</label><label><input type="checkbox" id="p-new" checked> Novidade</label><label><input type="checkbox" id="p-promotion"> Promoção</label></div>
+        <div class="form-row"><div class="form-group"><label>Tamanhos (vírgula)</label><input type="text" id="p-sizes" placeholder="PP, P, M, G, GG"></div><div class="form-group"><label>Cores (nome:hex)</label><input type="text" id="p-colors" placeholder="Preto:#000000, Rosa:#d4728c"></div></div>
+        <div class="form-group"><label>Imagens (selecione do computador)</label><input type="file" id="p-images" multiple accept="image/*"><div class="image-preview" id="image-preview"></div></div>
+        <div style="display:flex;gap:15px;margin-top:20px"><button type="submit" class="btn btn-primary">Salvar Produto</button><button type="button" class="btn btn-outline" onclick="showView('products',event)">Cancelar</button></div>
+      </form>
+    </div>
+  </main>
+</div>
+
+<script>
+let editingId = null;
+function switchTab(tab, e) { document.querySelectorAll('.login-tab').forEach(t=>t.classList.remove('active')); e.target.classList.add('active'); document.getElementById('login-form').style.display = tab==='login'?'block':'none'; document.getElementById('register-form').style.display = tab==='register'?'block':'none'; }
+document.getElementById('login-form').addEventListener('submit', async e => { e.preventDefault(); try { const r = await fetch('/api/auth/login', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({email: document.getElementById('login-email').value, password: document.getElementById('login-password').value})}); const d = await r.json(); if(d.token) { localStorage.setItem('token', d.token); localStorage.setItem('user', JSON.stringify(d.user)); checkAuth(); } else alert(d.error); } catch(e) { alert('Erro'); } });
+function checkAuth() { const user = JSON.parse(localStorage.getItem('user')||'{}'); if(user.role==='admin') { document.getElementById('login-screen').style.display='none'; document.getElementById('admin-screen').style.display='grid'; loadDashboard(); } else { alert('Acesso restrito'); logout(); } }
+function logout() { localStorage.removeItem('token'); localStorage.removeItem('user'); document.getElementById('login-screen').style.display='flex'; document.getElementById('admin-screen').style.display='none'; }
+function showView(view, e) { document.getElementById('dashboard-view').style.display = view==='dashboard'?'block':'none'; document.getElementById('products-view').style.display = view==='products'?'block':'none'; document.getElementById('form-view').style.display = view==='form'?'block':'none'; if(e) { document.querySelectorAll('.admin-nav a').forEach(a=>a.classList.remove('active')); e.target.classList.add('active'); } if(view==='dashboard') loadDashboard(); if(view==='products') loadProducts(); if(view==='form') { editingId=null; document.getElementById('form-title').textContent='Novo Produto'; document.getElementById('product-form').reset(); document.getElementById('image-preview').innerHTML=''; loadCategories(); } }
+async function loadDashboard() { try { const r = await fetch('/api/admin/dashboard', {headers:{'Authorization':`Bearer ${localStorage.getItem('token')}`}}); const d = await r.json(); document.getElementById('stats').innerHTML = `<div class="stat-card"><h3>Produtos</h3><div class="value">${d.totalProducts}</div></div><div class="stat-card"><h3>Pedidos</h3><div class="value">${d.totalOrders}</div></div><div class="stat-card"><h3>Receita</h3><div class="value">R$ ${d.totalRevenue.toFixed(2)}</div></div>`; } catch(e) {} }
+async function loadProducts() { try { const r = await fetch('/api/admin/products', {headers:{'Authorization':`Bearer ${localStorage.getItem('token')}`}}); const products = await r.json(); document.getElementById('products-table').innerHTML = products.map(p => `<tr><td><img src="${p.main_image||''}" onerror="this.style.background='var(--primary-soft)'"></td><td>${p.name}</td><td>${p.category_name}</td><td>R$ ${p.price.toFixed(2)}</td><td>${p.status==='active'?'✅':'❌'}</td><td class="admin-actions"><button class="btn btn-warning btn-sm" onclick="editProduct(${p.id})">Editar</button><button class="btn btn-danger btn-sm" onclick="deleteProduct(${p.id})">Excluir</button></td></tr>`).join(''); } catch(e) {} }
+async function loadCategories() { try { const r = await fetch('/api/categories'); const cats = await r.json(); document.getElementById('p-category').innerHTML = cats.map(c => `<option value="${c.id}">${c.name}</option>`).join(''); } catch(e) {} }
+async function editProduct(id) { editingId = id; showView('form'); document.getElementById('form-title').textContent = 'Editar Produto'; await loadCategories(); try { const r = await fetch(`/api/admin/products/${id}`, {headers:{'Authorization':`Bearer ${localStorage.getItem('token')}`}}); const d = await r.json(); const p = d.product; document.getElementById('p-name').value = p.name; document.getElementById('p-category').value = p.category_id; document.getElementById('p-type').value = p.type||''; document.getElementById('p-price').value = p.price; document.getElementById('p-sale-price').value = p.sale_price||''; document.getElementById('p-quantity').value = p.quantity; document.getElementById('p-occasion').value = p.occasion||''; document.getElementById('p-composition').value = p.composition||''; document.getElementById('p-description').value = p.description||''; document.getElementById('p-featured').checked = p.is_featured; document.getElementById('p-new').checked = p.is_new; document.getElementById('p-promotion').checked = p.is_promotion; document.getElementById('p-sizes').value = d.sizes.map(s=>s.size).join(', '); document.getElementById('p-colors').value = d.colors.map(c=>`${c.color_name}:${c.color_hex}`).join(', '); document.getElementById('image-preview').innerHTML = d.images.map(img => `<img src="${img.image_url}" data-url="${img.image_url}" data-main="${img.is_main}">`).join(''); } catch(e) { alert('Erro'); } }
+async function deleteProduct(id) { if(!confirm('Excluir produto?')) return; await fetch(`/api/admin/products/${id}`, {method:'DELETE', headers:{'Authorization':`Bearer ${localStorage.getItem('token')}`}}); loadProducts(); }
+document.getElementById('p-images').addEventListener('change', function(e) { const preview = document.getElementById('image-preview'); Array.from(e.target.files).forEach(file => { const reader = new FileReader(); reader.onload = e => { const img = document.createElement('img'); img.src = e.target.result; preview.appendChild(img); }; reader.readAsDataURL(file); }); });
+document.getElementById('product-form').addEventListener('submit', async e => { e.preventDefault(); const sizes = document.getElementById('p-sizes').value.split(',').map(s=>({size:s.trim().toUpperCase(), quantity:10})).filter(s=>s.size); const colors = document.getElementById('p-colors').value.split(',').map(c=>{const[n,h]=c.split(':'); return {name:n.trim(), hex:h.trim()};}).filter(c=>c.name&&c.hex); const existingImages = Array.from(document.querySelectorAll('#image-preview img')).map(img=>({url:img.dataset.url, is_main:parseInt(img.dataset.main)||0})); const formData = new FormData(); formData.append('name', document.getElementById('p-name').value); formData.append('category_id', document.getElementById('p-category').value); formData.append('type', document.getElementById('p-type').value); formData.append('price', document.getElementById('p-price').value); formData.append('sale_price', document.getElementById('p-sale-price').value); formData.append('quantity', document.getElementById('p-quantity').value); formData.append('occasion', document.getElementById('p-occasion').value); formData.append('composition', document.getElementById('p-composition').value); formData.append('description', document.getElementById('p-description').value); formData.append('is_featured', document.getElementById('p-featured').checked); formData.append('is_new', document.getElementById('p-new').checked); formData.append('is_promotion', document.getElementById('p-promotion').checked); formData.append('sizes', JSON.stringify(sizes)); formData.append('colors', JSON.stringify(colors)); formData.append('existingImages', JSON.stringify(existingImages)); const files = document.getElementById('p-images').files; for(let f of files) formData.append('images', f); const url = editingId ? `/api/admin/products/${editingId}` : '/api/admin/products'; const method = editingId ? 'PUT' : 'POST'; try { const r = await fetch(url, {method, headers:{'Authorization':`Bearer ${localStorage.getItem('token')}`}, body: formData}); if(r.ok) { alert(editingId?'Atualizado!':'Criado!'); showView('products'); } else { const d = await r.json(); alert('Erro: '+d.error); } } catch(e) { alert('Erro'); } });
+if(localStorage.getItem('token')) checkAuth();
+</script>
+</body>
+</html>

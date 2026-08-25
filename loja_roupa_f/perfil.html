@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Perfil - Floratta</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header class="header">
+  <div class="header-top">Frete gratis acima de R$ 199</div>
+  <div class="header-main">
+    <a href="/" class="logo">Floratta</a>
+    <div class="header-actions">
+      <a href="/pedidos" class="header-action"><span class="header-action-icon">o</span><span>Pedidos</span></a>
+      <a href="/wishlist" class="header-action"><span class="header-action-icon">+</span><span>Favoritos</span></a>
+      <a href="/carrinho" class="header-action"><span class="header-action-icon">o</span><span>Carrinho</span></a>
+    </div>
+  </div>
+</header>
+
+<div class="cart-page">
+  <div class="cart-header">
+    <h1>Meu Perfil</h1>
+    <p>Gerencie suas informacoes pessoais</p>
+  </div>
+  <div id="profile-content"><div class="loading"><div class="spinner"></div><p>Carregando...</p></div></div>
+</div>
+
+<footer class="footer"><div class="footer-bottom"><p>&copy; 2026 Floratta. Todos os direitos reservados.</p></div></footer>
+
+<script src="/script.js"></script>
+<script>
+async function loadProfile() {
+  const token = getToken();
+  if (!token) { window.location.href = '/login'; return; }
+  try {
+    const r = await fetch('/api/profile', { headers: { 'Authorization': 'Bearer ' + token } });
+    const user = await r.json();
+    document.getElementById('profile-content').innerHTML =
+      '<div class="cart-layout">' +
+        '<div class="cart-summary" style="text-align:center">' +
+          '<div style="width:120px;height:120px;border-radius:50%;background:var(--primary-light);margin:0 auto 20px;display:flex;align-items:center;justify-content:center;font-size:3rem;color:var(--primary);font-family:\'Cormorant Garamond\',serif">' + (user.name ? user.name.charAt(0).toUpperCase() : 'U') + '</div>' +
+          '<h2 style="margin-bottom:5px">' + user.name + '</h2>' +
+          '<p style="color:var(--text-light);margin-bottom:5px">' + user.email + '</p>' +
+          '<p style="color:var(--text-light);margin-bottom:20px;font-size:0.85rem">Cliente desde ' + new Date(user.created_at).toLocaleDateString('pt-BR') + '</p>' +
+          '<a href="/pedidos" class="btn btn-outline btn-block" style="margin-bottom:10px">Ver Meus Pedidos</a>' +
+          '<a href="/wishlist" class="btn btn-outline btn-block" style="margin-bottom:10px">Ver Favoritos</a>' +
+          '<button class="btn btn-danger btn-block" onclick="doLogout()">Sair da Conta</button>' +
+        '</div>' +
+        '<div class="cart-summary">' +
+          '<h3>Editar Perfil</h3>' +
+          '<form id="profile-form">' +
+            '<div class="form-group"><label>Nome</label><input type="text" id="profile-name" value="' + user.name + '" required></div>' +
+            '<div class="form-group"><label>Email</label><input type="email" value="' + user.email + '" readonly style="background:var(--bg-light)"></div>' +
+            '<div class="form-group"><label>Telefone</label><input type="tel" id="profile-phone" value="' + (user.phone || '') + '" placeholder="(11) 99999-9999"></div>' +
+            '<button type="submit" class="btn btn-primary btn-block">Salvar Alteracoes</button>' +
+          '</form>' +
+        '</div>' +
+      '</div>';
+    document.getElementById('profile-form').addEventListener('submit', async e => {
+      e.preventDefault();
+      try {
+        await fetch('/api/profile', {
+          method: 'PUT',
+          headers: { 'Authorization': 'Bearer ' + token, 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name: document.getElementById('profile-name').value,
+            phone: document.getElementById('profile-phone').value
+          })
+        });
+        notify('Perfil atualizado!');
+        loadProfile();
+      } catch(e) { notify('Erro ao atualizar', 'error'); }
+    });
+  } catch(e) {
+    console.error(e);
+    document.getElementById('profile-content').innerHTML = '<div class="empty-state"><p>Erro ao carregar perfil</p></div>';
+  }
+}
+
+function doLogout() {
+  if (!confirm('Deseja realmente sair?')) return;
+  localStorage.removeItem('floratta_token');
+  localStorage.removeItem('floratta_user');
+  window.location.href = '/';
+}
+
+document.addEventListener('DOMContentLoaded', loadProfile);
+</script>
+</body>
+</html>
