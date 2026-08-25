@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Floratta — Moda Feminina</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="top-bar">Frete grátis acima de R$ 199 — Parcele em até 6x sem juros</div>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="container header-row">
+    <a href="#" class="logo" onclick="goHome()">
+      <svg viewBox="0 0 100 120" width="50" height="60" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="petalGrad" cx="50%" cy="40%">
+            <stop offset="0%" stop-color="#f8bbd0"/>
+            <stop offset="50%" stop-color="#f48fb1"/>
+            <stop offset="100%" stop-color="#c2185b"/>
+          </radialGradient>
+        </defs>
+        <path d="M50 15 C50 15, 30 25, 25 45 C20 65, 35 80, 50 85 C65 80, 80 65, 75 45 C70 25, 50 15, 50 15 Z" fill="url(#petalGrad)" opacity="0.9"/>
+        <path d="M50 25 C50 25, 38 32, 35 48 C32 64, 42 75, 50 78 C58 75, 68 64, 65 48 C62 32, 50 25, 50 25 Z" fill="#f8bbd0" opacity="0.8"/>
+        <path d="M50 35 C50 35, 44 40, 42 50 C40 60, 46 68, 50 70 C54 68, 60 60, 58 50 C56 40, 50 35, 50 35 Z" fill="#fce4ec" opacity="0.9"/>
+        <path d="M30 50 C30 50, 20 48, 15 52 C10 56, 15 62, 20 62 C25 62, 30 55, 30 50 Z" fill="#c2185b" opacity="0.7"/>
+        <path d="M70 50 C70 50, 80 48, 85 52 C90 56, 85 62, 80 62 C75 62, 70 55, 70 50 Z" fill="#c2185b" opacity="0.7"/>
+        <path d="M50 70 C50 70, 45 78, 48 82 C51 86, 55 86, 58 82 C61 78, 56 70, 50 70 Z" fill="#c2185b" opacity="0.7"/>
+        <path d="M50 20 C50 20, 47 12, 50 8 C53 12, 50 20, 50 20 Z" fill="#c2185b" opacity="0.7"/>
+      </svg>
+      <div class="logo-text">
+        <span class="logo-main">Floratta</span>
+        <span class="logo-sub">AROMAS & ESSÊNCIAS</span>
+      </div>
+    </a>
+
+    <form class="search-form" onsubmit="return false;">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      <input type="text" id="search-input" placeholder="Buscar produtos...">
+    </form>
+
+    <div class="header-actions">
+      <button class="icon-btn" onclick="showPage('favoritos')" aria-label="Favoritos">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+        <span class="badge-count" id="fav-count">0</span>
+      </button>
+      <button class="icon-btn" onclick="showPage('conta')" aria-label="Conta">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      </button>
+      <button class="icon-btn" onclick="showPage('carrinho')" aria-label="Carrinho">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg>
+        <span class="badge-count" id="cart-count">0</span>
+      </button>
+      <button class="icon-btn mobile-nav-toggle" onclick="toggleMobileNav()" aria-label="Menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <nav class="main-nav" id="main-nav">
+    <div class="container">
+      <ul>
+        <li><a href="#" class="active" data-cat="all" onclick="filterCategory('all', event)">Home</a></li>
+        <li><a href="#" data-cat="Vestidos" onclick="filterCategory('Vestidos', event)">Vestidos</a></li>
+        <li><a href="#" data-cat="Blusas" onclick="filterCategory('Blusas', event)">Blusas</a></li>
+        <li><a href="#" data-cat="Calcas" onclick="filterCategory('Calcas', event)">Calças</a></li>
+        <li><a href="#" data-cat="Saias" onclick="filterCategory('Saias', event)">Saias</a></li>
+        <li><a href="#" data-cat="Conjuntos" onclick="filterCategory('Conjuntos', event)">Conjuntos</a></li>
+        <li><a href="#" data-cat="Acessorios" onclick="filterCategory('Acessorios', event)">Acessórios</a></li>
+        <li><a href="#" onclick="showPage('pagamento'); return false;">Pagamento</a></li>
+      </ul>
+    </div>
+  </nav>
+</header>
+
+<main id="main-content">
+
+  <!-- HOME -->
+  <section id="page-home">
+    <div class="container">
+      <!-- HERO CAROUSEL COM 5 SLIDES DIFERENTES -->
+      <div class="hero-carousel" id="hero-carousel">
+        <div class="hero-track" id="hero-track">
+          
+          <!-- SLIDE 1: Coleção Verão -->
+          <div class="hero-slide">
+            <div class="hero-slide__content">
+              <span class="eyebrow">Coleção Verão 2026</span>
+              <h1>Elegância que floresce em cada detalhe</h1>
+              <p>Descubra peças exclusivas feitas para realçar sua beleza natural com conforto e sofisticação.</p>
+              <div class="hero-slide__cta">
+                <a href="#" class="btn btn-primary" onclick="filterCategory('Vestidos', event)">Ver Coleção</a>
+                <span class="hero-slide__badge">Frete grátis acima de R$ 199</span>
+              </div>
+            </div>
+            <div class="hero-slide__image">
+              <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=900&q=80" alt="Coleção verão com vestidos leves e coloridos">
+            </div>
+          </div>
+
+          <!-- SLIDE 2: Novidades -->
+          <div class="hero-slide">
+            <div class="hero-slide__content">
+              <span class="eyebrow">Novidades</span>
+              <h1>Peças que contam histórias</h1>
+              <p>Texturas delicadas, cortes precisos e uma paleta que celebra o feminino em todas as suas formas.</p>
+              <div class="hero-slide__cta">
+                <a href="#" class="btn btn-primary" onclick="filterCategory('Blusas', event)">Explorar</a>
+              </div>
+            </div>
+            <div class="hero-slide__image">
+              <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?w=900&q=80" alt="Novidades de moda feminina em araras">
+            </div>
+          </div>
+
+          <!-- SLIDE 3: Promoções -->
+          <div class="hero-slide">
+            <div class="hero-slide__content">
+              <span class="eyebrow">Promoções</span>
+              <h1>Até 40% off em selecionados</h1>
+              <p>Ofertas especiais por tempo limitado. Aproveite antes que acabem.</p>
+              <div class="hero-slide__cta">
+                <a href="#" class="btn btn-primary" onclick="showPromotions()">Aproveitar</a>
+              </div>
+            </div>
+            <div class="hero-slide__image">
+              <img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=900&q=80" alt="Promoções e descontos em roupas femininas">
+            </div>
+          </div>
+
+          <!-- SLIDE 4: Acessórios -->
+          <div class="hero-slide">
+            <div class="hero-slide__content">
+              <span class="eyebrow">Acessórios</span>
+              <h1>O toque final perfeito</h1>
+              <p>Bolsas, colares e acessórios que transformam qualquer look em uma declaração de estilo.</p>
+              <div class="hero-slide__cta">
+                <a href="#" class="btn btn-primary" onclick="filterCategory('Acessorios', event)">Ver Acessórios</a>
+              </div>
+            </div>
+            <div class="hero-slide__image">
+              <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=900&q=80" alt="Acessórios femininos elegantes - bolsas e joias">
+            </div>
+          </div>
+
+          <!-- SLIDE 5: Elegância -->
+          <div class="hero-slide">
+            <div class="hero-slide__content">
+              <span class="eyebrow">Elegância Atemporal</span>
+              <h1>Para todas as ocasiões</h1>
+              <p>Do casual ao sofisticado, encontre a peça certa para cada momento da sua vida.</p>
+              <div class="hero-slide__cta">
+                <a href="#" class="btn btn-primary" onclick="filterCategory('all', event)">Ver Tudo</a>
+              </div>
+            </div>
+            <div class="hero-slide__image">
+              <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=900&q=80" alt="Moda elegante para todas as ocasiões">
+            </div>
+          </div>
+
+        </div>
+
+        <div class="hero-controls">
+          <button class="hero-arrow prev" onclick="changeSlide(-1)" aria-label="Anterior">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
+          </button>
+          <button class="hero-arrow next" onclick="changeSlide(1)" aria-label="Próximo">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
+          </button>
+        </div>
+
+        <div class="hero-dots" id="hero-dots"></div>
+      </div>
+
+      <!-- PERKS -->
+      <div class="perks-row">
+        <div class="perk">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+          <span>Frete grátis acima de R$ 199</span>
+        </div>
+        <div class="perk">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12V7H5a2 2 0 010-4h14v4"/><path d="M3 5v14a2 2 0 002 2h16v-5"/><path d="M18 12a2 2 0 000 4h4v-4h-4z"/></svg>
+          <span>Parcele em até 6x sem juros</span>
+        </div>
+        <div class="perk">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 109-9 9.75 9.75 0 00-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+          <span>Troca grátis em até 30 dias</span>
+        </div>
+        <div class="perk">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <span>Compra 100% segura</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- CATEGORIAS -->
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">Navegue por</span>
+            <h2>Categorias</h2>
+          </div>
+        </div>
+        <div class="category-grid">
+          <a href="#" class="category-card" onclick="filterCategory('Vestidos', event)">
+            <div class="category-card__img"><img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=400&q=80" alt="Vestidos"></div>
+            <span>Vestidos</span>
+          </a>
+          <a href="#" class="category-card" onclick="filterCategory('Blusas', event)">
+            <div class="category-card__img"><img src="https://images.unsplash.com/photo-1564257631407-4deb1f99d992?w=400&q=80" alt="Blusas"></div>
+            <span>Blusas</span>
+          </a>
+          <a href="#" class="category-card" onclick="filterCategory('Calcas', event)">
+            <div class="category-card__img"><img src="https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=400&q=80" alt="Calças"></div>
+            <span>Calças</span>
+          </a>
+          <a href="#" class="category-card" onclick="filterCategory('Saias', event)">
+            <div class="category-card__img"><img src="https://images.unsplash.com/photo-1583496661160-fb5886a0aaaa?w=400&q=80" alt="Saias"></div>
+            <span>Saias</span>
+          </a>
+          <a href="#" class="category-card" onclick="filterCategory('Conjuntos', event)">
+            <div class="category-card__img"><img src="https://images.unsplash.com/photo-1591369822096-ffd140ec948f?w=400&q=80" alt="Conjuntos"></div>
+            <span>Conjuntos</span>
+          </a>
+          <a href="#" class="category-card" onclick="filterCategory('Acessorios', event)">
+            <div class="category-card__img"><img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=400&q=80" alt="Acessórios"></div>
+            <span>Acessórios</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- DESTAQUES -->
+    <section class="section section--pink">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">Seleção especial</span>
+            <h2>Em Destaque</h2>
+          </div>
+          <a href="#" class="link-more" onclick="filterCategory('all', event); return false;">Ver tudo</a>
+        </div>
+        <div class="product-grid" id="featured-products"></div>
+      </div>
+    </section>
+
+    <!-- NOVIDADES -->
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">Recém-chegados</span>
+            <h2>Novidades</h2>
+          </div>
+        </div>
+        <div class="product-grid" id="new-products"></div>
+      </div>
+    </section>
+
+    <!-- SHOP COM FILTROS -->
+    <section class="section section--pink" id="shop-section">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow" id="shop-eyebrow">Catálogo completo</span>
+            <h2 id="shop-title">Todos os Produtos</h2>
+          </div>
+          <button class="btn btn-outline btn-sm mobile-filter-toggle" onclick="toggleFilters()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px;margin-right:.4rem"><path d="M3 6h18M7 12h10M10 18h4"/></svg>
+            Filtros
+          </button>
+        </div>
+
+        <div class="active-filters" id="active-filters"></div>
+
+        <div class="shop-layout">
+          <aside class="filters-panel" id="filters-panel">
+            <h3>Filtros <button class="btn btn-ghost btn-sm" onclick="clearFilters()" style="font-size:.7rem">Limpar</button></h3>
+
+            <div class="filter-group">
+              <div class="filter-group__title">Tamanhos</div>
+              <div class="size-pills" id="size-filters">
+                <label class="size-pill"><input type="checkbox" value="PP" onchange="applyFilters()"><span>PP</span></label>
+                <label class="size-pill"><input type="checkbox" value="P" onchange="applyFilters()"><span>P</span></label>
+                <label class="size-pill"><input type="checkbox" value="M" onchange="applyFilters()"><span>M</span></label>
+                <label class="size-pill"><input type="checkbox" value="G" onchange="applyFilters()"><span>G</span></label>
+                <label class="size-pill"><input type="checkbox" value="GG" onchange="applyFilters()"><span>GG</span></label>
+              </div>
+            </div>
+
+            <div class="filter-group">
+              <div class="filter-group__title">Cores</div>
+              <div class="color-swatches" id="color-filters">
+                <label class="color-swatch" style="background:#000" title="Preto"><input type="checkbox" value="Preto" onchange="applyFilters()"></label>
+                <label class="color-swatch" style="background:#fff;border:1px solid #ddd" title="Branco"><input type="checkbox" value="Branco" onchange="applyFilters()"></label>
+                <label class="color-swatch" style="background:#c97b8e" title="Rosa"><input type="checkbox" value="Rosa" onchange="applyFilters()"></label>
+                <label class="color-swatch" style="background:#27ae60" title="Verde"><input type="checkbox" value="Verde" onchange="applyFilters()"></label>
+                <label class="color-swatch" style="background:#3498db" title="Azul"><input type="checkbox" value="Azul" onchange="applyFilters()"></label>
+                <label class="color-swatch" style="background:#f39c12" title="Amarelo"><input type="checkbox" value="Amarelo" onchange="applyFilters()"></label>
+              </div>
+            </div>
+
+            <div class="filter-group">
+              <div class="filter-group__title">Preço máximo</div>
+              <div class="range-row"><span>R$ 0</span><span id="price-value">R$ 500</span></div>
+              <input type="range" id="price-range" min="0" max="500" value="500" step="10" onchange="applyFilters()">
+            </div>
+
+            <div class="filter-group">
+              <div class="filter-group__title">Ocasião</div>
+              <label class="filter-option"><input type="checkbox" value="Casual" onchange="applyFilters()"><span>Casual</span></label>
+              <label class="filter-option"><input type="checkbox" value="Trabalho" onchange="applyFilters()"><span>Trabalho</span></label>
+              <label class="filter-option"><input type="checkbox" value="Festa" onchange="applyFilters()"><span>Festa</span></label>
+            </div>
+
+            <div class="filters-actions">
+              <button class="btn btn-primary btn-block" onclick="applyFilters()">Aplicar filtros</button>
+            </div>
+          </aside>
+
+          <div>
+            <div class="shop-toolbar">
+              <span id="result-count" style="font-size:.85rem;color:var(--color-text-soft)"></span>
+              <select id="sort-select" onchange="applyFilters()">
+                <option value="newest">Mais recentes</option>
+                <option value="price-asc">Menor preço</option>
+                <option value="price-desc">Maior preço</option>
+                <option value="name">Nome A-Z</option>
+              </select>
+            </div>
+            <div class="product-grid" id="all-products"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </section>
+
+  <!-- PRODUTO DETALHE -->
+  <section id="page-produto" style="display:none">
+    <div class="page-banner">
+      <div class="container">
+        <h1 id="pdp-title">Produto</h1>
+        <div class="breadcrumb"><a href="#" onclick="goHome()">Home</a> / <span id="pdp-breadcrumb">Produto</span></div>
+      </div>
+    </div>
+    <div class="container section--tight">
+      <div class="product-detail" id="product-detail"></div>
+      <div class="section">
+        <div class="section-head">
+          <div><span class="eyebrow">Combine com</span><h2>Complete o Look</h2></div>
+        </div>
+        <div class="product-grid" id="related-products"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CARRINHO -->
+  <section id="page-carrinho" style="display:none">
+    <div class="page-banner">
+      <div class="container"><h1>Meu Carrinho</h1></div>
+    </div>
+    <div class="container section--tight">
+      <div id="cart-content"></div>
+    </div>
+  </section>
+
+  <!-- FAVORITOS -->
+  <section id="page-favoritos" style="display:none">
+    <div class="page-banner">
+      <div class="container"><h1>Meus Favoritos</h1></div>
+    </div>
+    <div class="container section--tight">
+      <div id="fav-content"></div>
+    </div>
+  </section>
+
+  <!-- PEDIDOS -->
+  <section id="page-pedidos" style="display:none">
+    <div class="page-banner">
+      <div class="container"><h1>Meus Pedidos</h1></div>
+    </div>
+    <div class="container section--tight">
+      <div id="orders-content"></div>
+    </div>
+  </section>
+
+  <!-- PAGAMENTO MELHORADO -->
+  <section id="page-pagamento" style="display:none">
+    <div class="page-banner">
+      <div class="container">
+        <h1>Formas de Pagamento</h1>
+        <p style="margin-top:10px;color:var(--color-text-soft)">Escolha a melhor opção para você</p>
+      </div>
+    </div>
+    <div class="container section--tight">
+      <div class="payment-methods-grid">
+        <div class="payment-method-card">
+          <div class="payment-icon">💳</div>
+          <h3>Cartão de Crédito</h3>
+          <p>Parcele em até 6x sem juros</p>
+          <ul style="list-style:none;padding:0;margin:1rem 0;font-size:.9rem;color:var(--color-text-soft)">
+            <li style="padding:.4rem 0">✓ Visa, Mastercard, Elo</li>
+            <li style="padding:.4rem 0">✓ American Express</li>
+            <li style="padding:.4rem 0">✓ Aprovação imediata</li>
+          </ul>
+        </div>
+        <div class="payment-method-card">
+          <div class="payment-icon">💰</div>
+          <h3>Cartão de Débito</h3>
+          <p>Pagamento à vista com 5% OFF</p>
+          <ul style="list-style:none;padding:0;margin:1rem 0;font-size:.9rem;color:var(--color-text-soft)">
+            <li style="padding:.4rem 0">✓ Desconto de 5%</li>
+            <li style="padding:.4rem 0">✓ Todos os bancos</li>
+            <li style="padding:.4rem 0">✓ Segurança total</li>
+          </ul>
+        </div>
+        <div class="payment-method-card">
+          <div class="payment-icon"></div>
+          <h3>PIX</h3>
+          <p>Pagamento instantâneo com 10% OFF</p>
+          <ul style="list-style:none;padding:0;margin:1rem 0;font-size:.9rem;color:var(--color-text-soft)">
+            <li style="padding:.4rem 0">✓ Desconto de 10%</li>
+            <li style="padding:.4rem 0">✓ Aprovação na hora</li>
+            <li style="padding:.4rem 0">✓ QR Code ou copia e cola</li>
+          </ul>
+        </div>
+        <div class="payment-method-card">
+          <div class="payment-icon">📄</div>
+          <h3>Boleto Bancário</h3>
+          <p>Pague com boleto e ganhe 5% OFF</p>
+          <ul style="list-style:none;padding:0;margin:1rem 0;font-size:.9rem;color:var(--color-text-soft)">
+            <li style="padding:.4rem 0">✓ Desconto de 5%</li>
+            <li style="padding:.4rem 0">✓ Vencimento em 3 dias</li>
+            <li style="padding:.4rem 0">✓ Todos os bancos</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="panel" style="margin-top:2rem">
+        <h3>Parcelamento sem Juros</h3>
+        <table class="measure-table">
+          <thead><tr><th>Parcelas</th><th>Valor da Parcela</th><th>Total</th></tr></thead>
+          <tbody>
+            <tr><td>1x à vista</td><td>R$ 409,70</td><td>R$ 409,70</td></tr>
+            <tr><td>2x sem juros</td><td>R$ 204,85</td><td>R$ 409,70</td></tr>
+            <tr><td>3x sem juros</td><td>R$ 136,57</td><td>R$ 409,70</td></tr>
+            <tr><td>4x sem juros</td><td>R$ 102,43</td><td>R$ 409,70</td></tr>
+            <tr><td>5x sem juros</td><td>R$ 81,94</td><td>R$ 409,70</td></tr>
+            <tr><td>6x sem juros</td><td>R$ 68,28</td><td>R$ 409,70</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="panel">
+        <h3>Segurança na Compra</h3>
+        <ul style="list-style:none;padding:0">
+          <li style="padding:.6rem 0;border-bottom:1px solid var(--color-border);display:flex;align-items:center;gap:.6rem"><span style="color:var(--color-success);font-weight:700">✓</span> Site 100% seguro com certificado SSL</li>
+          <li style="padding:.6rem 0;border-bottom:1px solid var(--color-border);display:flex;align-items:center;gap:.6rem"><span style="color:var(--color-success);font-weight:700">✓</span> Dados protegidos com criptografia de ponta</li>
+          <li style="padding:.6rem 0;border-bottom:1px solid var(--color-border);display:flex;align-items:center;gap:.6rem"><span style="color:var(--color-success);font-weight:700">✓</span> Compra garantida — devolução em até 30 dias</li>
+          <li style="padding:.6rem 0;display:flex;align-items:center;gap:.6rem"><span style="color:var(--color-success);font-weight:700">✓</span> Atendimento ao cliente 24 horas</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTA -->
+  <section id="page-conta" style="display:none">
+    <div class="page-banner">
+      <div class="container"><h1>Minha Conta</h1></div>
+    </div>
+    <div class="container section--tight">
+      <div class="account-layout">
+        <aside class="account-nav">
+          <a href="#" class="active">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:18px;height:18px"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            Perfil
+          </a>
+          <a href="#" onclick="showPage('pedidos')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:18px;height:18px"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+            Pedidos
+          </a>
+          <a href="#" onclick="showPage('favoritos')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:18px;height:18px"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+            Favoritos
+          </a>
+          <a href="#" onclick="showPage('carrinho')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:18px;height:18px"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg>
+            Carrinho
+          </a>
+        </aside>
+        <div class="account-content">
+          <div class="panel">
+            <h3>Meu Perfil</h3>
+            <form class="form-grid" onsubmit="updateProfile(event)">
+              <div class="field">
+                <label>Nome completo</label>
+                <input type="text" id="profile-name" required>
+              </div>
+              <div class="field">
+                <label>Email</label>
+                <input type="email" id="profile-email" required>
+              </div>
+              <div class="field">
+                <label>Telefone</label>
+                <input type="tel" id="profile-phone">
+              </div>
+              <div class="field">
+                <label>Data de nascimento</label>
+                <input type="date" id="profile-birth">
+              </div>
+              <div class="field full">
+                <label>Endereço</label>
+                <textarea id="profile-address" rows="3"></textarea>
+              </div>
+              <div class="field full" style="margin-top:1rem">
+                <button type="submit" class="btn btn-primary">Salvar alterações</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER MELHORADO -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="logo" style="color:#fff;margin-bottom:1rem">
+          <svg viewBox="0 0 100 120" width="40" height="48" xmlns="http://www.w3.org/2000/svg">
+            <path d="M50 15 C50 15, 30 25, 25 45 C20 65, 35 80, 50 85 C65 80, 80 65, 75 45 C70 25, 50 15, 50 15 Z" fill="#f48fb1" opacity="0.9"/>
+            <path d="M50 25 C50 25, 38 32, 35 48 C32 64, 42 75, 50 78 C58 75, 68 64, 65 48 C62 32, 50 25, 50 25 Z" fill="#f8bbd0" opacity="0.8"/>
+            <path d="M50 35 C50 35, 44 40, 42 50 C40 60, 46 68, 50 70 C54 68, 60 60, 58 50 C56 40, 50 35, 50 35 Z" fill="#fce4ec" opacity="0.9"/>
+          </svg>
+          <div class="logo-text">
+            <span class="logo-main" style="color:#fff">Floratta</span>
+            <span class="logo-sub" style="color:rgba(255,255,255,0.7)">AROMAS & ESSÊNCIAS</span>
+          </div>
+        </div>
+        <p>Moda feminina que celebra a elegância e a autenticidade. Peças selecionadas com carinho para você se sentir única.</p>
+        <div class="footer-social">
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+          <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+          <a href="#" aria-label="Pinterest"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 12c0-2.2 1.8-4 4-4s4 1.8 4 4-1.8 4-4 4"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h4>Links úteis</h4>
+        <ul>
+          <li><a href="#" onclick="showPage('conta')">Minha conta</a></li>
+          <li><a href="#" onclick="showPage('pedidos')">Meus pedidos</a></li>
+          <li><a href="#" onclick="showPage('favoritos')">Favoritos</a></li>
+          <li><a href="#">Trocas e devoluções</a></li>
+          <li><a href="#">Política de privacidade</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Atendimento</h4>
+        <ul>
+          <li>contato@floratta.com</li>
+          <li>(11) 99999-9999</li>
+          <li>Seg a Sex: 9h às 18h</li>
+          <li>Sáb: 9h às 13h</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Newsletter</h4>
+        <p>Receba novidades e promoções exclusivas</p>
+        <form style="margin-top:1rem" onsubmit="return false;">
+          <input type="email" placeholder="Seu email" style="width:100%;padding:.7rem 1rem;border-radius:var(--radius-sm);border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.1);color:#fff;margin-bottom:.5rem">
+          <button class="btn btn-primary btn-block">Assinar</button>
+        </form>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Floratta. Todos os direitos reservados. | CNPJ: 00.000.000/0001-00</p>
+    </div>
+  </div>
+</footer>
+
+<!-- NOTIFICATION -->
+<div id="notification"></div>
+
+<script src="script.js"></script>
+</body>
+</html>

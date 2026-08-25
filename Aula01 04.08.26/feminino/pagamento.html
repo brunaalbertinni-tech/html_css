@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pagamento - Floratta</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="top-bar">Frete grátis acima de R$ 199 | Parcele em até 6x sem juros</div>
+  <div class="container header-row">
+    <a href="index.html" class="logo">
+      <svg viewBox="0 0 100 120" width="50" height="60">
+        <path d="M50 15 C50 15, 30 25, 25 45 C20 65, 35 80, 50 85 C65 80, 80 65, 75 45 C70 25, 50 15, 50 15 Z" fill="#f48fb1" opacity="0.9"/>
+        <path d="M50 25 C50 25, 38 32, 35 48 C32 64, 42 75, 50 78 C58 75, 68 64, 65 48 C62 32, 50 25, 50 25 Z" fill="#f8bbd0" opacity="0.8"/>
+        <path d="M50 35 C50 35, 44 40, 42 50 C40 60, 46 68, 50 70 C54 68, 60 60, 58 50 C56 40, 50 35, 50 35 Z" fill="#fce4ec" opacity="0.9"/>
+      </svg>
+      <div class="logo-text">
+        <span class="logo-main">Floratta</span>
+        <span class="logo-sub">AROMAS & ESSÊNCIAS</span>
+      </div>
+    </a>
+    <div class="header-actions">
+      <a href="index.html" class="btn btn-outline btn-sm">Voltar à Loja</a>
+    </div>
+  </div>
+</header>
+
+<div class="page-banner">
+  <div class="container">
+    <h1>Finalizar Compra</h1>
+    <div class="breadcrumb">
+      <a href="index.html">Home</a> / <a href="carrinho.html">Carrinho</a> / Pagamento
+    </div>
+  </div>
+</div>
+
+<div class="container" style="padding-bottom: 4rem;">
+  <div class="shop-layout">
+    
+    <!-- FORMULÁRIO DE PAGAMENTO -->
+    <div>
+      <div class="panel">
+        <h3>Informações de Entrega</h3>
+        <form id="checkout-form">
+          <div class="form-grid">
+            <div class="field full">
+              <label>Nome Completo</label>
+              <input type="text" id="checkout-name" required placeholder="Seu nome completo">
+            </div>
+            <div class="field full">
+              <label>Email</label>
+              <input type="email" id="checkout-email" required placeholder="seu@email.com">
+            </div>
+            <div class="field full">
+              <label>Endereço Completo</label>
+              <textarea id="checkout-address" rows="3" required placeholder="Rua, número, bairro, cidade, CEP"></textarea>
+            </div>
+            <div class="field">
+              <label>Telefone</label>
+              <input type="tel" id="checkout-phone" placeholder="(11) 99999-9999">
+            </div>
+            <div class="field">
+              <label>CEP</label>
+              <input type="text" id="checkout-cep" placeholder="00000-000">
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <div class="panel">
+        <h3>Forma de Pagamento</h3>
+        <div class="payment-methods-grid">
+          <label class="payment-method-card">
+            <input type="radio" name="payment" value="credit" checked style="display:none">
+            <div class="payment-icon"></div>
+            <h3>Cartão de Crédito</h3>
+            <p>Parcele em até 6x sem juros</p>
+            <ul>
+              <li>✓ Visa, Mastercard, Elo</li>
+              <li>✓ American Express</li>
+              <li>✓ Aprovação imediata</li>
+            </ul>
+          </label>
+          <label class="payment-method-card">
+            <input type="radio" name="payment" value="debit" style="display:none">
+            <div class="payment-icon"></div>
+            <h3>Cartão de Débito</h3>
+            <p>Pagamento à vista com 5% OFF</p>
+            <ul>
+              <li>✓ Desconto de 5%</li>
+              <li>✓ Todos os bancos</li>
+              <li>✓ Segurança total</li>
+            </ul>
+          </label>
+          <label class="payment-method-card">
+            <input type="radio" name="payment" value="pix" style="display:none">
+            <div class="payment-icon"></div>
+            <h3>PIX</h3>
+            <p>Pagamento instantâneo com 10% OFF</p>
+            <ul>
+              <li>✓ Desconto de 10%</li>
+              <li>✓ Aprovação na hora</li>
+              <li>✓ QR Code ou copia e cola</li>
+            </ul>
+          </label>
+          <label class="payment-method-card">
+            <input type="radio" name="payment" value="boleto" style="display:none">
+            <div class="payment-icon">📄</div>
+            <h3>Boleto Bancário</h3>
+            <p>Pague com boleto e ganhe 5% OFF</p>
+            <ul>
+              <li>✓ Desconto de 5%</li>
+              <li>✓ Vencimento em 3 dias</li>
+              <li>✓ Todos os bancos</li>
+            </ul>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <!-- RESUMO DO PEDIDO -->
+    <div>
+      <div class="summary-card">
+        <h3>Resumo do Pedido</h3>
+        <div id="order-summary">
+          <div class="summary-row">
+            <span>Carregando...</span>
+            <span>-</span>
+          </div>
+        </div>
+        <div class="summary-row total">
+          <span>Total</span>
+          <span id="order-total">R$ 0,00</span>
+        </div>
+        
+        <!-- BOTÃO FINALIZAR COMPRA - Usando classes existentes -->
+        <button class="btn btn-primary btn-block" onclick="finalizarCompra()" style="margin-top: 1.5rem; padding: 1.2rem; font-size: 1rem;">
+          Finalizar Compra
+        </button>
+        
+        <a href="carrinho.html" class="btn btn-outline btn-block" style="margin-top: .8rem;">
+          Voltar ao Carrinho
+        </a>
+      </div>
+
+      <div class="panel" style="margin-top: 1.5rem;">
+        <h3>Parcelamento sem Juros</h3>
+        <table class="measure-table">
+          <thead>
+            <tr>
+              <th>Parcelas</th>
+              <th>Valor</th>
+            </tr>
+          </thead>
+          <tbody id="installments-table">
+            <tr><td>1x à vista</td><td>R$ 0,00</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="panel">
+        <h3>Segurança</h3>
+        <ul style="list-style: none; padding: 0;">
+          <li style="padding: .6rem 0; border-bottom: 1px solid var(--color-border); display: flex; align-items: center; gap: .6rem;">
+            <span style="color: var(--color-success); font-weight: 700;">✓</span>
+            <span style="font-size: .9rem; color: var(--color-text-soft);">Site 100% seguro com SSL</span>
+          </li>
+          <li style="padding: .6rem 0; border-bottom: 1px solid var(--color-border); display: flex; align-items: center; gap: .6rem;">
+            <span style="color: var(--color-success); font-weight: 700;">✓</span>
+            <span style="font-size: .9rem; color: var(--color-text-soft);">Dados criptografados</span>
+          </li>
+          <li style="padding: .6rem 0; display: flex; align-items: center; gap: .6rem;">
+            <span style="color: var(--color-success); font-weight: 700;">✓</span>
+            <span style="font-size: .9rem; color: var(--color-text-soft);">Devolução em até 30 dias</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-bottom">
+      <p>© 2026 Floratta. Todos os direitos reservados.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Carregar carrinho do localStorage
+const cart = JSON.parse(localStorage.getItem('floratta_cart') || '[]');
+
+function fmt(p) { 
+  return 'R$ ' + parseFloat(p).toFixed(2).replace('.', ','); 
+}
+
+function renderSummary() {
+  const summaryEl = document.getElementById('order-summary');
+  const totalEl = document.getElementById('order-total');
+  const installmentsEl = document.getElementById('installments-table');
+  
+  if (cart.length === 0) {
+    summaryEl.innerHTML = '<div class="summary-row"><span>Carrinho vazio</span><span>-</span></div>';
+    totalEl.textContent = 'R$ 0,00';
+    return;
+  }
+  
+  const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+  
+  summaryEl.innerHTML = cart.map(item => `
+    <div class="summary-row">
+      <span>${item.name} (${item.quantity}x)</span>
+      <span>${fmt(item.price * item.quantity)}</span>
+    </div>
+  `).join('');
+  
+  totalEl.textContent = fmt(total);
+  
+  // Tabela de parcelas
+  installmentsEl.innerHTML = `
+    <tr><td>1x à vista</td><td>${fmt(total)}</td></tr>
+    <tr><td>2x sem juros</td><td>${fmt(total / 2)}</td></tr>
+    <tr><td>3x sem juros</td><td>${fmt(total / 3)}</td></tr>
+    <tr><td>4x sem juros</td><td>${fmt(total / 4)}</td></tr>
+    <tr><td>5x sem juros</td><td>${fmt(total / 5)}</td></tr>
+    <tr><td>6x sem juros</td><td>${fmt(total / 6)}</td></tr>
+  `;
+}
+
+function finalizarCompra() {
+  const name = document.getElementById('checkout-name').value;
+  const email = document.getElementById('checkout-email').value;
+  const address = document.getElementById('checkout-address').value;
+  
+  if (!name || !email || !address) {
+    alert('Por favor, preencha todos os campos obrigatórios!');
+    return;
+  }
+  
+  if (cart.length === 0) {
+    alert('Seu carrinho está vazio!');
+    return;
+  }
+  
+  const paymentMethod = document.querySelector('input[name="payment"]:checked').value;
+  const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+  
+  // Criar pedido
+  const order = {
+    id: 'ORD-' + Date.now(),
+    date: new Date().toISOString(),
+    customer: { name, email, address },
+    items: [...cart],
+    total: total,
+    paymentMethod: paymentMethod,
+    status: 'pending'
+  };
+  
+  // Salvar pedido
+  const orders = JSON.parse(localStorage.getItem('floratta_orders') || '[]');
+  orders.unshift(order);
+  localStorage.setItem('floratta_orders', JSON.stringify(orders));
+  
+  // Limpar carrinho
+  localStorage.removeItem('floratta_cart');
+  
+  // Mostrar confirmação
+  alert(`Pedido realizado com sucesso!\n\nNúmero: ${order.id}\nTotal: ${fmt(total)}\n\nObrigado pela compra!`);
+  
+  // Redirecionar
+  window.location.href = 'index.html';
+}
+
+// Destacar método de pagamento selecionado
+document.querySelectorAll('.payment-method-card').forEach(card => {
+  card.addEventListener('click', function() {
+    document.querySelectorAll('.payment-method-card').forEach(c => {
+      c.style.borderColor = 'var(--color-border)';
+      c.style.background = 'var(--color-white)';
+    });
+    this.style.borderColor = 'var(--color-primary)';
+    this.style.background = 'var(--color-bg-pink)';
+  });
+});
+
+// Inicializar
+renderSummary();
+
+// Destacar primeiro método de pagamento
+const firstPayment = document.querySelector('.payment-method-card');
+if (firstPayment) {
+  firstPayment.style.borderColor = 'var(--color-primary)';
+  firstPayment.style.background = 'var(--color-bg-pink)';
+}
+</script>
+
+</body>
+</html>

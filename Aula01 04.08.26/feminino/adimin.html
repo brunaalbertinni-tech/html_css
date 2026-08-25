@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin - Floratta</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="admin-layout">
+  <aside class="admin-sidebar">
+    <div class="logo">Floratta Admin</div>
+    <ul class="admin-nav">
+      <li><a href="#" class="active">Dashboard</a></li>
+      <li><a href="#">Produtos</a></li>
+      <li><a href="#">Novo Produto</a></li>
+      <li><a href="#">Pedidos</a></li>
+      <li><a href="index.html">Ver Loja</a></li>
+      <li><a href="login.html">Sair</a></li>
+    </ul>
+  </aside>
+  
+  <main class="admin-content">
+    <div class="admin-header">
+      <h1>Dashboard</h1>
+    </div>
+    
+    <div class="stats-grid">
+      <div class="stat-card">
+        <h3>Total de Produtos</h3>
+        <div class="value">24</div>
+      </div>
+      <div class="stat-card">
+        <h3>Total de Pedidos</h3>
+        <div class="value">156</div>
+      </div>
+      <div class="stat-card">
+        <h3>Receita Total</h3>
+        <div class="value">R$ 12.450</div>
+      </div>
+      <div class="stat-card">
+        <h3>Clientes</h3>
+        <div class="value">89</div>
+      </div>
+    </div>
+    
+    <div class="admin-header" style="margin-top:40px;">
+      <h2>Produtos Recentes</h2>
+      <a href="#" class="btn btn-primary">+ Novo Produto</a>
+    </div>
+    
+    <div class="admin-table">
+      <table>
+        <thead>
+          <tr>
+            <th>Imagem</th>
+            <th>Nome</th>
+            <th>Categoria</th>
+            <th>Preço</th>
+            <th>Status</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=100" alt=""></td>
+            <td>Vestido Floral</td>
+            <td>Vestidos</td>
+            <td>R$ 149,90</td>
+            <td>Ativo</td>
+            <td><a href="#" class="btn btn-outline" style="padding:6px 12px; font-size:0.75rem;">Editar</a></td>
+          </tr>
+          <tr>
+            <td><img src="https://images.unsplash.com/photo-1564257631407-4deb1f99d992?w=100" alt=""></td>
+            <td>Blusa Seda</td>
+            <td>Blusas</td>
+            <td>R$ 129,90</td>
+            <td>Ativo</td>
+            <td><a href="#" class="btn btn-outline" style="padding:6px 12px; font-size:0.75rem;">Editar</a></td>
+          </tr>
+          <tr>
+            <td><img src="https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=100" alt=""></td>
+            <td>Calça Alfaiataria</td>
+            <td>Calças</td>
+            <td>R$ 119,90</td>
+            <td>Ativo</td>
+            <td><a href="#" class="btn btn-outline" style="padding:6px 12px; font-size:0.75rem;">Editar</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
+</div>
+
+</body>
+</html>
